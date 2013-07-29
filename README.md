@@ -17,9 +17,14 @@ The input to your system will be a map of name to phone number.  Names
 therefore cannot repeat (i.e. you don't have to deal with
 disambiguation).
 
-If you complete the first part of the kata, feel free to jump in to
-adding the ability to parse the phone number list from a text file in
-`<name> : <number>` form!
+Extensions
+----------
+
+Add the ability to parse the phone number list from a text file in
+`<name> : <number>` form
+
+Report back which entries are in conflict: "Bob @ 91125426" is unreachable 
+because of "Emergency @ 911"
 
 Credit
 ------
