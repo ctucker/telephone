@@ -10,6 +10,15 @@ public class PhoneDialer {
 	}
 
 	public boolean isConsistent() {
-		return !map.containsKey("Bob") || !map.containsKey("Emergency");
+		for (Map.Entry<String, String> entry1 : map.entrySet()) {
+			for (Map.Entry<String, String> entry2 : map.entrySet()) {
+				if (!entry2.getKey().equals(entry1.getKey())) {
+					if (entry2.getValue().startsWith(entry1.getValue()))
+						return false;
+				}
+			}
+		}
+
+		return true;
 	}
 }
