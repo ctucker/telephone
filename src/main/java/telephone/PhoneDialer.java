@@ -2,13 +2,11 @@ package telephone;
 
 import java.util.Map;
 
-import com.google.common.collect.Maps;
-
 public class PhoneDialer {
 	final Map<String, String> map;
 
 	public PhoneDialer(Map<String, String> map) {
-		this.map = normalize(map);
+		this.map = new PhoneNormalizer().normalize(map);
 	}
 
 	public boolean isConsistent() {
@@ -31,14 +29,4 @@ public class PhoneDialer {
 		return false;
 	}
 
-	String normalize(String number) {
-		return number.replaceAll("\\s+", "");
-	}
-
-	Map<String, String> normalize(Map<String, String> input) {
-		Map<String, String> output = Maps.newHashMap();
-		for (Map.Entry<String, String> entry : input.entrySet())
-			output.put(entry.getKey(), normalize(entry.getValue()));
-		return output;
-	}
 }
