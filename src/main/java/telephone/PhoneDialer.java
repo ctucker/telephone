@@ -21,11 +21,15 @@ public class PhoneDialer {
 	private boolean containsPrefix(String excludedKey, String value) {
 		for (Map.Entry<String, String> entry2 : map.entrySet()) {
 			if (!entry2.getKey().equals(excludedKey)) {
-				if (entry2.getValue().replaceAll("\\s+", "").startsWith(value.replaceAll("\\s+", "")))
+				if (normalize(entry2.getValue()).startsWith(normalize(value)))
 					return true;
 			}
 		}
 
 		return false;
+	}
+
+	private String normalize(String number) {
+		return number.replaceAll("\\s+", "");
 	}
 }
