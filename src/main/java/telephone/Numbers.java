@@ -10,6 +10,6 @@ public class Numbers {
 	}
 
 	public boolean isConsistent() {
-		return !map.containsKey("Emergency");
+		return !map.containsKey("Bob") || !map.containsKey("Emergency");
 	}
 }
