@@ -42,32 +42,12 @@ public class ListIsConsistent {
 	}
 
 	@Test
-	public void bobAliceIsConsistent() {
+	public void sharedPrefixIsInconsistent() {
 		Map<String, String> map = Maps.newHashMap();
-		map.put("Bob", "91125426");
-		map.put("Alice", "97 625 992");
+		map.put("Bob", "12345");
+		map.put("Alice", "123456");
 
 		PhoneDialer numbers = new PhoneDialer(map);
-		assertTrue(numbers.isConsistent());
+		assertFalse(numbers.isConsistent());
 	}
-
-	@Test
-	public void aliceEmergencyIsConsistent() {
-		Map<String, String> map = Maps.newHashMap();
-		map.put("Emergency", "911");
-		map.put("Alice", "97 625 992");
-
-		PhoneDialer numbers = new PhoneDialer(map);
-		assertTrue(numbers.isConsistent());
-	}
-
-	@Test
-	public void anySingleNumberIsConsistent() {
-		Map<String, String> map = Maps.newHashMap();
-		map.put("Jack", "911");
-
-		PhoneDialer numbers = new PhoneDialer(map);
-		assertTrue(numbers.isConsistent());
-	}
-
 }
