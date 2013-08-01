@@ -2,11 +2,13 @@ package telephone;
 
 import java.util.Map;
 
+import com.google.common.collect.Maps;
+
 public class PhoneDialer {
-	private final Map<String, String> map;
+	final Map<String, String> map;
 
 	public PhoneDialer(Map<String, String> map) {
-		this.map = map;
+		this.map = normalize(map);
 	}
 
 	public boolean isConsistent() {
@@ -21,7 +23,7 @@ public class PhoneDialer {
 	private boolean containsPrefix(String excludedKey, String value) {
 		for (Map.Entry<String, String> entry2 : map.entrySet()) {
 			if (!entry2.getKey().equals(excludedKey)) {
-				if (normalize(entry2.getValue()).startsWith(normalize(value)))
+				if (entry2.getValue().startsWith(value))
 					return true;
 			}
 		}
@@ -29,7 +31,14 @@ public class PhoneDialer {
 		return false;
 	}
 
-	private String normalize(String number) {
+	String normalize(String number) {
 		return number.replaceAll("\\s+", "");
+	}
+
+	Map<String, String> normalize(Map<String, String> input) {
+		Map<String, String> output = Maps.newHashMap();
+		for (Map.Entry<String, String> entry : input.entrySet())
+			output.put(entry.getKey(), normalize(entry.getValue()));
+		return output;
 	}
 }
