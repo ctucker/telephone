@@ -17,7 +17,7 @@ public class ListIsConsistent {
 		map.put("Alice", "97 625 992");
 		map.put("Emergency", "911");
 
-		Numbers numbers = new Numbers(map);
+		PhoneDialer numbers = new PhoneDialer(map);
 		assertFalse(numbers.isConsistent());
 	}
 
@@ -27,7 +27,7 @@ public class ListIsConsistent {
 		map.put("Bob", "91125426");
 		map.put("Alice", "97 625 992");
 
-		Numbers numbers = new Numbers(map);
+		PhoneDialer numbers = new PhoneDialer(map);
 		assertTrue(numbers.isConsistent());
 	}
 
@@ -37,8 +37,18 @@ public class ListIsConsistent {
 		map.put("Emergency", "911");
 		map.put("Alice", "97 625 992");
 
-		Numbers numbers = new Numbers(map);
+		PhoneDialer numbers = new PhoneDialer(map);
 		assertTrue(numbers.isConsistent());
 	}
+
+	@Test
+	public void anySingleNumberIsConsistent() {
+		Map<String, String> map = Maps.newHashMap();
+		map.put("Jack", "911");
+
+		PhoneDialer numbers = new PhoneDialer(map);
+		assertTrue(numbers.isConsistent());
+	}
+
 
 }

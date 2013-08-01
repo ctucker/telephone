@@ -2,10 +2,10 @@ package telephone;
 
 import java.util.Map;
 
-public class Numbers {
+public class PhoneDialer {
 	private final Map<String, String> map;
 
-	public Numbers(Map<String, String> map) {
+	public PhoneDialer(Map<String, String> map) {
 		this.map = map;
 	}
 
