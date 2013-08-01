@@ -11,14 +11,21 @@ public class PhoneDialer {
 
 	public boolean isConsistent() {
 		for (Map.Entry<String, String> entry1 : map.entrySet()) {
-			for (Map.Entry<String, String> entry2 : map.entrySet()) {
-				if (!entry2.getKey().equals(entry1.getKey())) {
-					if (entry2.getValue().startsWith(entry1.getValue()))
-						return false;
-				}
-			}
+			if (containsPrefix(entry1.getKey(), entry1.getValue()))
+				return false;
 		}
 
 		return true;
+	}
+
+	private boolean containsPrefix(String excludedKey, String value) {
+		for (Map.Entry<String, String> entry2 : map.entrySet()) {
+			if (!entry2.getKey().equals(excludedKey)) {
+				if (entry2.getValue().replaceAll("\\s+", "").startsWith(value.replaceAll("\\s+", "")))
+					return true;
+			}
+		}
+
+		return false;
 	}
 }

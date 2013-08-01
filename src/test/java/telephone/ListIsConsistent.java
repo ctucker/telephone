@@ -32,6 +32,16 @@ public class ListIsConsistent {
 	}
 
 	@Test
+	public void spacesAreIrrelevantInconsistent() {
+		Map<String, String> map = Maps.newHashMap();
+		map.put("Bob", "9 1");
+		map.put("Alice", "91");
+
+		PhoneDialer numbers = new PhoneDialer(map);
+		assertFalse(numbers.isConsistent());
+	}
+
+	@Test
 	public void sameNumberIsInconsistent() {
 		Map<String, String> map = Maps.newHashMap();
 		map.put("Bob", "911");
