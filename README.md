@@ -20,11 +20,11 @@ disambiguation).
 Extensions
 ----------
 
-Add the ability to parse the phone number list from a text file in
-`<name> : <number>` form
-
 Report back which entries are in conflict: "Bob @ 91125426" is unreachable 
 because of "Emergency @ 911"
+
+Add the ability to parse the phone number list from a text file in
+`<name> : <number>` form
 
 Credit
 ------
